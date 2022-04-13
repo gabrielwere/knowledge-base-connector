@@ -6,13 +6,14 @@ const cropRoute = express.Router();
 
 cropRoute.route("/:cropName").get(async function(req,res){
     const db = dbConnection.getDb();
-    db
+    const cursor = db
     .collection('crops')
     .find({cropName:req.params.cropName},{projection:{_id:0}})
-    .toArray()
-    .then((result)=>{
-        res.json(result)
-    })
+
+   cursor.forEach((crop)=>{
+       res.json(crop)
+   })
+    
 })
 
 module.exports = cropRoute
