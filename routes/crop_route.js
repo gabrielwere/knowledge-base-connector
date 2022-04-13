@@ -8,7 +8,7 @@ cropRoute.route("/:cropName").get(async function(req,res){
     const db = dbConnection.getDb();
     db
     .collection('crops')
-    .find({cropName:req.params.cropName})
+    .find({cropName:req.params.cropName},{projection:{_id:0}})
     .toArray()
     .then((result)=>{
         res.json(result)
