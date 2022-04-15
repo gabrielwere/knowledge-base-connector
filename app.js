@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const mongoConnection = require('./db/connection');
 
-const port = 3000;
+const port = 5000;
 
 mongoConnection.connectToServer(function(err){
     if(err) console.log(err)
