@@ -11,6 +11,7 @@ cropRoute.route("/:cropName").get(async function(req,res){
     .find({cropName:req.params.cropName},{projection:{_id:0}})
 
    cursor.forEach((crop)=>{
+       res.set('Access-Control-Allow-Origin', '*')
        res.json(crop)
    })
     
